@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Local Music Player (Album Mode)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="player-container">
+        <input type="file" id="music-file-input" accept="audio/*" multiple>
+
+        <h3 id="song-title">Select an album (multiple songs)</h3>
+        <p id="track-info"></p>
+
+        <audio id="audio-player"></audio>
+
+        <div id="controls">
+            <button id="play-pause-btn">
+                <img id="play-pause-icon" src="playfill.png" alt="Play/Pause">
+            </button>
+
+        <div id="time-container">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress-bar" value="0" min="0" max="100">
+            <span id="duration">0:00</span>
+        </div>
+    </div>
+
+    <script src="player.js"></script>
+</body>
+</html>

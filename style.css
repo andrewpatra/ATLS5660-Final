@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+    margin: 0;
+}
+
+#player-container {
+    background-color: #404040;
+    padding: 30px;
+    border-radius: 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 393px;
+    height: 852px;
+    text-align: center;
+}
+
+#music-file-input {
+    margin-bottom: 20px;
+}
+
+#song-title {
+    color: #D8D8D8;
+    font-size: 1.2em;
+    min-height: 30px; /* To prevent layout jump */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 0;
+}
+
+/* Hide the default HTML5 controls, as we are creating custom ones */
+#audio-player {
+    display: none;
+}
+
+#controls button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #404040;
+    color: none;
+    transition: background-color 0.2s;
+}
+
+#time-container {
+    color: #D8D8D8;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#progress-bar {
+    flex-grow: 1;
+    margin: 0 10px;
+}
