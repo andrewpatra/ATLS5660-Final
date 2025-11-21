@@ -18,6 +18,42 @@ body {
     text-align: center;
 }
 
+#cassette-container {
+    width: 248px;
+    height: 343px;
+    flex-shrink: 0;
+    border-radius: 44px;
+    background: linear-gradient(0deg, #005280 0%, #B35E52 100%);
+    box-shadow: 1px 10px 4px 0 rgba(0, 0, 0, 0.25) inset;
+    padding: 73px;
+}
+
+#album-list-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.album-card { 
+    width: 100px;
+    height: 100px;
+    background: #D8D8D8;
+    box-shadow: 1px 10px 4px 0 rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.album-card:hover {
+    transform: scale(1.05);
+}
+
+.album-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 #music-file-input {
     margin-bottom: 20px;
 }
@@ -25,11 +61,16 @@ body {
 #song-title {
     color: #D8D8D8;
     font-size: 1.2em;
-    min-height: 30px; /* To prevent layout jump */
+    min-height: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-top: 0;
+}
+
+#track-info {
+    color: #D8D8D8;
+    font-size: .5em;
 }
 
 /* Hide the default HTML5 controls, as we are creating custom ones */
@@ -43,7 +84,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #404040;
+    background-color: transparent;
     color: none;
     transition: background-color 0.2s;
 }
