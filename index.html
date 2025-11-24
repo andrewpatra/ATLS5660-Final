@@ -9,18 +9,27 @@
 <body>
 
     <div id="player-container">
-        <h3 id="song-title">Select an album</h3>
-        <p id="track-info"></p>
+        <div id="info-container">
+            <h3 id="song-title">Select an album</h3>
+            <p id="track-info"></p>
+        </div>
+        <div id="logo-container">
+            <img id="sette-logo" src="SetteLogo.png" alt="logo">
+        </div>
 
         <audio id="audio-player"></audio>
 
         <div id="cassette-container">
             <div id="album-list-container"></div>
+            <div id="wheel-spin" class="hidden"></div>
         </div>
 
         <div id="controls">
             <button id="play-pause-btn">
                 <img id="play-pause-icon" src="playfill.png" alt="Play/Pause">
+            </button>
+            <button id="stop-btn" class="hidden">
+                <img id="stop-icon" src="stopfill.png" alt="Stop">
             </button>
 
         <div id="time-container">

@@ -4,12 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const audioPlayer = document.getElementById('audio-player');
     const playPauseBtn = document.getElementById('play-pause-btn');
     const playPauseIcon = document.getElementById('play-pause-icon'); 
+    const stopIcon = document.getElementById('stop-btn');
     const songTitle = document.getElementById('song-title');
     const trackInfo = document.getElementById('track-info');
     const progressBar = document.getElementById('progress-bar');
     const currentTimeSpan = document.getElementById('current-time');
     const durationSpan = document.getElementById('duration');
     const albumListContainer = document.getElementById('album-list-container');
+    const wheelSpinner = document.getElementById('wheel-spin');
 
     let playlist = []; 
     let currentTrackIndex = 0;
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const playIconSrc = 'playfill.png'; 
     const pauseIconSrc = 'pausefill.png'; 
+    const stopIconSrc = 'stopfill.png';
 
     function formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
         
-        songTitle.textContent = fileName;
+        songTitle.textContent = fileName.slice(0, -4);
         trackInfo.textContent = `Track ${currentTrackIndex + 1} of ${playlist.length}`;
         
         audioPlayer.load();
@@ -75,26 +78,42 @@ document.addEventListener('DOMContentLoaded', () => {
         const album = ALBUM_DATA[albumKey];
 
         if (album) {
-            // 1. Update the playlist state
+
             playlist = album.tracks;
             currentTrackIndex = 0;
             
-            // 2. Load and start playing the first track
+            albumListContainer.classList.add('hidden');
+            wheelSpinner.classList.remove('hidden');
+
             loadTrack(currentTrackIndex);
             
-            // 3. Update the player controls to the playing state
             isPlaying = true;
             audioPlayer.play();
             playPauseIcon.src = pauseIconSrc;
             playPauseIcon.alt = 'Pause';
             
-            // Optional: Highlight the currently selected album card
-            document.querySelectorAll('.album-card').forEach(card => card.classList.remove('selected'));
-            clickedCard.classList.add('selected');
         }
     }
 
     renderAlbumCards();
+
+    function resetPlayerUI() {
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
+    
+    isPlaying = false;
+    playPauseIcon.src = playIconSrc;
+    playPauseIcon.alt = 'Play';
+    
+    songTitle.textContent = "Select an album";
+    trackInfo.textContent = "";
+    currentTimeSpan.textContent = '0:00';
+    progressBar.value = 0;
+
+    albumListContainer.classList.remove('hidden'); 
+    wheelSpinner.classList.add('hidden');        
+
+    }
 
     playPauseBtn.addEventListener('click', () => {
 
@@ -102,12 +121,20 @@ document.addEventListener('DOMContentLoaded', () => {
             audioPlayer.pause();
             playPauseIcon.src = 'playfill.png'; 
             playPauseIcon.alt = 'Play';
+            stopIcon.classList.remove('hidden');
         } else {
             audioPlayer.play();
             playPauseIcon.src = 'pausefill.png'; 
             playPauseIcon.alt = 'Pause';
+            stopIcon.classList.add('hidden');
         }    
         isPlaying = !isPlaying;
+    });
+
+    // Once I figured out how the "system" worked I was able to build out the stop button and its reaction by myself without assistance!
+    stopIcon.addEventListener('click', () => {
+        resetPlayerUI();
+        stopIcon.classList.add('hidden');    
     });
 
     function playNext() {

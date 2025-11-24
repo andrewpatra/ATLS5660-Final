@@ -18,6 +18,16 @@ body {
     text-align: center;
 }
 
+#logo-container {
+    padding-left: 78px;
+    padding-bottom: 20px;
+    position: relative;
+    width: 237px;
+    height: 139px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
 #cassette-container {
     width: 248px;
     height: 343px;
@@ -30,15 +40,17 @@ body {
 
 #album-list-container {
     display: flex;
+    position: static;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 40px;
 }
 
 .album-card { 
     width: 100px;
-    height: 100px;
+    height: 170px;
     background: #D8D8D8;
     box-shadow: 1px 10px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
     flex-shrink: 0;
     transition: transform 0.2s;
     position: relative;
@@ -51,6 +63,7 @@ body {
 .album-card img {
     width: 100%;
     height: 100%;
+    border-radius: 25px;
     object-fit: cover;
 }
 
@@ -58,7 +71,15 @@ body {
     margin-bottom: 20px;
 }
 
+#info-container {
+    display: flex;
+    float: right;
+    flex-direction: row;
+    justify-content: center;
+}
+
 #song-title {
+    flex-shrink: 0;
     color: #D8D8D8;
     font-size: 1.2em;
     min-height: 30px;
@@ -79,7 +100,10 @@ body {
 }
 
 #controls button {
-    padding: 10px 15px;
+    width: 45px;
+    height: 48px;
+    object-fit: fill;
+    padding-top: 30px;
     margin: 5px;
     border: none;
     border-radius: 5px;
@@ -90,6 +114,7 @@ body {
 }
 
 #time-container {
+    padding-top: 20px;
     color: #D8D8D8;
     display: flex;
     align-items: center;
@@ -99,4 +124,57 @@ body {
 #progress-bar {
     flex-grow: 1;
     margin: 0 10px;
+}
+
+/*
+Source - https://stackoverflow.com/a
+Posted by Gabriele Petrioli, modified by community. See post 'Timeline' for change history
+Retrieved 2025-11-24, License - CC BY-SA 4.0
+*/
+
+#wheel-spin {
+    width: 275px;
+    height: 275px;
+    background-image: url(TopWheel.png);
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 4000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none !important;
 }
